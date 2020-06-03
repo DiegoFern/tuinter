@@ -1,0 +1,83 @@
+<head>
+  <link rel="stylesheet" href="/static/css/generic.css"}>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+
+<div id=app>
+  <barrra></barrra>
+  <div   v-for='msg in messages ' align='center'>
+    <div class="card" style="width: 50%;" align='left'>
+      {{ msg }}
+    </div>
+  </div>
+
+  <div align='center'>
+    <form align='leff'>
+      <input type='text' v-model="newMsg" >
+
+      </input>
+      <button  v-on:click='send_msg()'> add mensage
+      </button >
+    </form>
+  </div>
+
+</div>
+
+
+<script>
+
+function get_mss(){
+
+}
+Vue.component('barrra',{
+  template:`
+      <div  class="topnav">
+        <a href="/follow">Folow</a>
+        <a href="/logout">Logout</a>
+      </div>
+  `
+ })
+
+
+
+var app = new Vue({
+  el: '#app',
+
+  data() {
+    return {
+
+    'user':'',
+    'messages':[1,2,3],
+    'new':'',
+    'newMsg':''
+    }
+  },
+  mounted(){
+    axios.get('/list_message').then(res=>{
+          this.user = res.data.user
+          this.messages = res.data.messages
+          console.log(res.data.messages)
+          }
+      )
+  },
+  methods:{
+    send_msg(){
+      if (this.newMsg!='')
+          {axios.post('/list_message',{'message':this.newMsg}).then( (res,data)=>{
+                if (!res.error){
+                  this.messages.push(this.newMsg,()=>{ this.newMsg='' })
+                }else{console.log(res)}
+
+          })
+    }}
+
+  }
+
+  })
+
+</script>

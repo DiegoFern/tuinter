@@ -1,0 +1,24 @@
+{% if error %}
+  <div background='red'>
+    non valid e-mail
+  </div>
+{%endif%}
+<div>
+  <form action="/new_login" method="post">
+ <div>
+  <label for="Name"> Name: 
+    <input type="text" name="Name" id="Name" value="">
+  </label>
+ </div>
+ <div>
+  <label for="Password">Password: <input type="text" name="Password" id="Password" value="">
+  </label>  
+ </div>
+ <div>
+  <label for="Email"> Email: <input type="text" name="Email" id="Email" value="">
+ </label> 
+ </div>
+ <div>
+   <button type="submit">new_user</button>
+  </form>
+</div>
