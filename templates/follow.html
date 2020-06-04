@@ -6,22 +6,21 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <div id='app'>
+  <bar></bar>
   <h1 v-if='follows.length>0'>Actual Followers</h1>
       <div v-for='f in follows'>
-        {{ f.name }}
+        <card v-bind:m=m></card>
       </div>
     <h1 v-if='propolsal.length>0'>Want to Followers</h1>
-      <div class='card' v-for='p in propolsal'>
-        {{ p.name }}
+      <div v-for='m in  propolsal '>
+          <card v-bind:m='m' v-bind:click='f' v-bind:nam='"append"'
+          ></card>
       </div>
-
 </div>
-
+<script src='./static/components/card.js'> </script>
+<script src='./static/components/bar.js'> </script>
 
 <script >
-Vue.component('view-card',
-
-)
 app = new Vue({
   el:'#app',
   data(){
@@ -30,6 +29,10 @@ app = new Vue({
      'propolsal':[]   
       }
     },
+  methods:{
+    f(m){
+      alert(m)}
+  },
   mounted(){
     axios.get('/api_follow').then(res=>{
         this.follows = res.data.follows;
