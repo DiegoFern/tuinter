@@ -9,7 +9,7 @@
 
 
 <div id=app>
-  <barrra></barrra>
+  <bar></bar>
   <div   v-for='msg in messages ' align='center'>
     <div class="card" style="width: 50%;" align='left'>
       {{ msg }}
@@ -28,55 +28,7 @@
 
 </div>
 
-
-
-function get_mss(){
-
-}
-Vue.component('barrra',{
-  template:`
-      <div  class="topnav">
-        <a href="/follow">Folow</a>
-        <a href="/logout">Logout</a>
-      </div>
-  `
- })
-
-
-
-var app = new Vue({
-  el: '#app',
-
-  data() {
-    return {
-
-    'user':'',
-    'messages':[1,2,3],
-    'new':'',
-    'newMsg':''
-    }
-  },
-  mounted(){
-    axios.get('/list_message').then(res=>{
-          this.user = res.data.user
-          this.messages = res.data.messages
-          console.log(res.data.messages)
-          }
-      )
-  },
-  methods:{
-    send_msg(){
-      if (this.newMsg!='')
-          {axios.post('/list_message',{'message':this.newMsg}).then( (res,data)=>{
-                if (!res.error){
-                  this.messages.push(this.newMsg,()=>{ this.newMsg='' })
-                }else{console.log(res)}
-
-          })
-    }}
-
-  }
-
-  })
+ <script src="static/components/bar.js"></script>
+<script src="static/components/messages.js">
 
 </script>

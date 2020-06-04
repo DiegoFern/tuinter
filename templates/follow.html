@@ -20,26 +20,26 @@
 <script src='./static/components/card.js'> </script>
 <script src='./static/components/bar.js'> </script>
 
-<script >
-app = new Vue({
-  el:'#app',
-  data(){
-    return {
-    'follows':[],
-     'propolsal':[]   
-      }
-    },
-  methods:{
-    f(m){
-      alert(m)}
-  },
-  mounted(){
-    axios.get('/api_follow').then(res=>{
-        this.follows = res.data.follows;
-        this.propolsal = res.data.propolsal;
-        this.user =res.data.user}
-    )
-    }
+<script src='./static/components/follow.js'></script>
 
-  })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
