@@ -4,5 +4,6 @@ Vue.component('bar',{ template:`
         <a href="/messages">Add messages</a>
         <a href="/logout">Logout  </a>
       </div>
-  `
- })
+  `}
+)
+

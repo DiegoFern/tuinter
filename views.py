@@ -76,10 +76,12 @@ def new_login():
         return 'NON VALID'
 
 @app.route('/follow',methods=['GET'])
+@logged
 def follow():
     return open('templates/follow.html').read()
 
 @app.route('/api_follow',methods=['GET'])
+@logged
 def follow_api():
     user = User.query.get(session['email'])
     return jsonify({
@@ -97,6 +99,7 @@ def logout():
     return redirect('/')
 
 @app.route('/messages', methods=['GET'])
+@logged
 def show_messages():
     url_for('static', filename='css/generic.css')
     return open('templates/messages.html').read()

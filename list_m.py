@@ -11,10 +11,10 @@ from models import *
 
 class list_messages:
     def get():
-        mssg = [m.text
+        mssg = [m.json()
                     for U in User.query.get(session['email']).following
                     for m in U.message
-                ]+list(map(lambda x:x.text,User.query.get(session['email']).message))
+                ]+list(map(lambda x:x.json(),User.query.get(session['email']).message))
         return {
             'user' : 'user',
             'messages' : mssg

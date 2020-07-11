@@ -43,11 +43,17 @@ class Message(Model):
     text = db.Column(db.String)
     editor = db.Column(db.String,db.ForeignKey('User.Email'))
 
+    def json(self):
+        return {
+            'text':self.text,
+            'editor':self.editor
+        }
+
+
 Follow_table = db.Table( 'Follow',
     db.Column('left_id', db.Integer, db.ForeignKey('User.Email')),
     db.Column('right_id', db.Integer, db.ForeignKey('User.Email'))
 )
-
 
 if __name__ == '__main__':
     print('creating')

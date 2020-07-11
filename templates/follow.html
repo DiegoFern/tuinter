@@ -7,39 +7,26 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <div id='app'>
   <bar></bar>
-  <h1 v-if='follows.length>0'>Actual Followers</h1>
-      <div v-for='f in follows'>
+  <h1 v-if='follows.length>0'>Actual Follow</h1>
+      <div v-for='f in follows' align='center'>
         <card v-bind:m=m></card>
       </div>
-    <h1 v-if='propolsal.length>0'>Want to Followers</h1>
-      <div v-for='m in  propolsal '>
-          <card v-bind:m='m' v-bind:click='f' v-bind:nam='"append"'
-          ></card>
-      </div>
+  <blockcards 
+    :list='follows' 
+    :name_button='"a"'
+    :click='f'
+    ></blockcards>  
+
+  <h1 v-if='propolsal.length>0'>Want to Follow</h1>
+  <blockcards 
+    :list='propolsal' 
+    :name_button='"append"'
+    :click='f'
+    ></blockcards> 
 </div>
 <script src='./static/components/card.js'> </script>
+<script src='./static/components/block_cards.js'> </script>
 <script src='./static/components/bar.js'> </script>
 
 <script src='./static/components/follow.js'></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </script>

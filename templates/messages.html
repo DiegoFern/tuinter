@@ -5,15 +5,14 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<!-- add type="module" -->
 
 
 
 <div id=app>
   <bar></bar>
-  <div   v-for='msg in messages ' align='center'>
-    <div class="card" style="width: 50%;" align='left'>
-      {{ msg }}
-    </div>
+  <div   v-for='msg in messages ' align='center' >
+    <msg :msg='msg' style="width: 30rem;" ></msg>
   </div>
 
   <div align='center'>
@@ -28,7 +27,12 @@
 
 </div>
 
- <script src="static/components/bar.js"></script>
-<script src="static/components/messages.js">
+ <script src="static/components/card.js">
+ </script>
+ <script src="static/components/msg.js"></script>
+ <script type='imports'>
+  import * from 'static/components/bar.js'; 
+ </script>
+ <script src="static/components/messages.js">
 
 </script>
